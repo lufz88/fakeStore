@@ -1,24 +1,22 @@
 import { useParams } from 'react-router-dom';
-import { productsApi } from '../../Assets/ApiUrls';
 import { Card } from '../../Components/Card/Card';
 import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu/CheckoutSideMenu';
 import { Layout } from '../../Components/Layout/Layout';
 import { ProductDetail } from '../../Components/ProductDetail/ProductDetail';
-import { useFetch } from '../../Hooks/UseFetch';
 import { MagnifyingGlassCircleIcon } from '@heroicons/react/24/outline';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../Context/Context';
 
 export const Home = () => {
-	const { setSearchByTitle, searchByTitle } = useContext(Context);
-	const data = useFetch(`${productsApi}?limit=0`);
+	const { setSearchByTitle, searchByTitle, items } = useContext(Context);
+
 	const { categoryName } = useParams();
 	let products;
 
 	if (categoryName) {
-		products = data?.products.filter(product => product.category === categoryName);
+		products = items?.products.filter(product => product.category === categoryName);
 	} else {
-		products = data?.products;
+		products = items?.products;
 	}
 
 	const [productsByTitle, setProductsByTitle] = useState();

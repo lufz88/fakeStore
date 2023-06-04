@@ -3,15 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
-import { useFetch } from '../../Hooks/UseFetch';
-import { categoriesApi } from '../../Assets/ApiUrls';
 import { Categories } from '../Categories/Categories';
 import { Context } from '../../Context/Context';
 
 export const Navbar = () => {
 	const activeStyle = 'underline underline-offset-4';
 
-	const categories = useFetch(categoriesApi);
+	const { categories } = useContext(Context);
 	const { count, openSideMenu } = useContext(Context);
 
 	return (
@@ -24,9 +22,9 @@ export const Navbar = () => {
 					{categories?.map(category => {
 						return (
 							<Categories
+								activeStyle={activeStyle}
 								key={category}
 								category={category}
-								activeStyle={activeStyle}
 							/>
 						);
 					})}

@@ -1,5 +1,6 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { categoriesApi, productsApi } from '../Assets/ApiUrls';
 
 export const Context = createContext();
 
@@ -7,6 +8,24 @@ export const ContextProvider = ({ children }) => {
 	ContextProvider.propTypes = {
 		children: PropTypes.node.isRequired,
 	};
+
+	// Fetch
+
+	const [items, setItems] = useState();
+
+	useEffect(() => {
+		fetch(`${productsApi}?limit=0`)
+			.then(res => res.json())
+			.then(data => setItems(data));
+	}, []);
+
+	const [categories, setCategories] = useState();
+
+	useEffect(() => {
+		fetch(categoriesApi)
+			.then(res => res.json())
+			.then(data => setCategories(data));
+	}, []);
 
 	// Counter
 	const [count, setCount] = useState(0);
@@ -102,6 +121,8 @@ export const ContextProvider = ({ children }) => {
 		orders,
 		setSearchByTitle,
 		searchByTitle,
+		items,
+		categories,
 	};
 
 	return <Context.Provider value={data}>{children}</Context.Provider>;
