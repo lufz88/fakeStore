@@ -16,7 +16,7 @@ export const Categories = ({ category, activeStyle }) => {
 		<li>
 			<NavLink
 				className={({ isActive }) => (isActive ? activeStyle : undefined)}
-				to={`/${category}`}
+				to={`/categories/${category}`}
 				onClick={() => setSearchByTitle('')}>
 				{category}
 			</NavLink>

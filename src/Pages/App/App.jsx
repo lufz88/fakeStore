@@ -13,7 +13,7 @@ const AppRoutes = () => {
 	let routes = useRoutes([
 		{ path: '/', element: <Home /> },
 		{ path: '/all', element: <Home /> },
-		{ path: '/:categoryName', element: <Home /> },
+		{ path: '/categories/:categoryName', element: <Home /> },
 		{ path: '/my-orders/last', element: <MyOrder /> },
 		{ path: '/my-orders/:index', element: <MyOrder /> },
 		{ path: '/my-orders', element: <MyOrders /> },
