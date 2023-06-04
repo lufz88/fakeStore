@@ -43,20 +43,7 @@ export const Navbar = () => {
 						My Orders
 					</NavLink>
 				</li>
-				<li>
-					<NavLink
-						to='/my-account'
-						className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-						My Account
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to='sign-in'
-						className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-						Sign In
-					</NavLink>
-				</li>
+
 				<li onClick={openSideMenu} className='cursor-pointer'>
 					<ShoppingCartIcon className='w-6 h-6' />
 					<div className='fixed top-8 right-6'>{count}</div>

@@ -23,6 +23,9 @@ export const MyOrders = () => {
 						</Link>
 					);
 				})}
+				{!orders.length > 0 && (
+					<p className='text-center mt-2 font-thin'>Buy something 😀</p>
+				)}
 			</div>
 		</Layout>
 	);
